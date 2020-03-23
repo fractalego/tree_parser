@@ -284,3 +284,42 @@ def test(eval_model, batches):
 def get_edge_label_from_vector(vector):
     index = torch.argmax(vector)
     return dep_edges[index]
+
+
+def create_graph(edges, adj, pos, tokens, tokenizer):
+    tokens = tokenizer.convert_ids_to_tokens(tokens[1:])
+
+    words = []
+    joined_word = ''
+    for token in tokens[::-1]:
+        words.append(token + joined_word)
+        if token[:2] == '##':
+            joined_word = token[2:] + joined_word
+        else:
+            joined_word = ''
+    words = words[::-1]
+
+    pos_indices = [torch.argmax(vector) for vector in pos[1:]]
+    edges_indices = [torch.argmax(vector) for vector in edges[1:]]
+    adj_indices = [int(torch.argmax(vector)) - 1 for vector in adj][1:]
+
+    pos_labels = [pos_tags[index] for index in pos_indices]
+    edge_labels = [dep_edges[index] for index in edges_indices]
+
+    g = DiGraph()
+    for index, item in enumerate(zip(pos_labels, edge_labels, words, adj_indices)):
+        pos = item[0]
+        edge = item[1]
+        token = item[2]
+        link_from = item[3]
+
+        if pos == 'JOIN':
+            continue
+
+        g.add_node(str(index) + '_' + token, **{'pos': pos, 'token': token})
+        if link_from != -1:
+            g.add_edge(str(index) + '_' + token,
+                       str(link_from) + '_' + words[link_from],
+                       **{'label': edge})
+
+    return g
