@@ -4,7 +4,7 @@ This repo contains a simple code on a BERT-based dependency parse.
 I wanted to build one from scratch and ended up being surprised by how easy 
 it has become at the current level of NLP.
 
-The main inspiration is [Dozat and Manning] as well as [Kondratyuk and Straka].
+The main inspiration is [Dozat and Manning](https://nlp.stanford.edu/pubs/dozat2017deep.pdf) as well as [Kondratyuk and Straka](https://www.aclweb.org/anthology/D19-1279/).
 
 ## Installation
 Please install [git-lfs](https://git-lfs.github.com/) before installing
