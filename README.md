@@ -7,6 +7,8 @@ it has become at the current level of NLP.
 The main inspiration is [Dozat and Manning] as well as [Kondratyuk and Straka].
 
 ## Installation
+Please install [git-lfs](https://git-lfs.github.com/) before installing
+
 ```bash
 git clone https://github.com/fractalego/tree_parser.git
 cd tree_parser
@@ -96,18 +98,26 @@ edge labels:
 
 ```
 
-## Architecture
+## Architecture and training
+
+The stylized architecture is depicted below 
 
 ![Architecture](images/parser_diagram.png)
+
+While the full code is found in the file [model.py](tree_parser/model.py) 
+
+The system is trained with an Adam optimizer using 5e-5 as step size. 
+
+The two transformer layers seem to add stability to training: without the the system ends up stuck in a local minimum after a few epochs.
+
 
 ## Dataset and results
 
 The system is trained on the UG dataset [en_gum-ud](https://universaldependencies.org/treebanks/en_gum/index.html)
 
-The results of the system are quite good. A comparison with a non BERT-based method can be found in 
-[Nguyen and Vespoor](https://www.aclweb.org/anthology/K18-2008/):
+The results of the system are quite good. A comparison with a non BERT-based method can be found in the excellent paper   [Nguyen and Vespoor](https://www.aclweb.org/anthology/K18-2008/):
 Bert seems to add 6% points in UAS and 7 in LAS. 
-Curiously the POS score is increased by only 1%.   
+Curiously the POS score is increased by only 1 percentage point.   
 
 | Set | UAS | LAS | POS |
 |:---:|:---:|:---:|:---:|
@@ -115,4 +125,6 @@ Curiously the POS score is increased by only 1%.
 | Test| 0.9 | 0.87| 0.95|
 
 
-# Comments
+# Comments 
+
+A pretrained BERT language model seems to be improving upon LSTM based training. By quite a lot!  
