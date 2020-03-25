@@ -1,6 +1,6 @@
 # Simple Dependency Parser
 
-This repo contains a simple code on a BERT-based dependency parse. 
+This repo contains a simple code on a BERT-based dependency parser. 
 I wanted to build one from scratch and ended up being surprised by how easy 
 it has become at the current level of NLP.
 
