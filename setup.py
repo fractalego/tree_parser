@@ -13,7 +13,7 @@ setup(name='dep_tree_parser',
       long_description_content_type="text/markdown",
       packages=['tree_parser'],
       install_requires=[
-          'numpy==1.18.1',
+          'numpy==1.22.0',
           'transformers==2.5.1',
           'python-igraph==0.7.1.post6',
           'pytorch-transformers==1.2.0',
