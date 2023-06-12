@@ -14,7 +14,7 @@ setup(name='dep_tree_parser',
       packages=['tree_parser'],
       install_requires=[
           'numpy==1.18.1',
-          'transformers==2.5.1',
+          'transformers==4.30.0',
           'python-igraph==0.7.1.post6',
           'pytorch-transformers==1.2.0',
           'networkx==2.4.0',
