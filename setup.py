@@ -18,7 +18,7 @@ setup(name='dep_tree_parser',
           'python-igraph==0.7.1.post6',
           'pytorch-transformers==1.2.0',
           'networkx==2.4.0',
-          'scipy==1.2.3',
+          'scipy==1.10.0',
       ],
       classifiers=[
           'License :: OSI Approved :: MIT License',
